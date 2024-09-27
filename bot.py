@@ -1,11 +1,12 @@
 import telebot
-from config import TOKEN
 import os
 import yt_dlp
+from config import token
 
 
 
-bot = telebot.TeleBot(TOKEN)
+# load_dotenv()
+bot = telebot.TeleBot(token)
 dict_links = {}
 
 @bot.message_handler(commands=['start'])
