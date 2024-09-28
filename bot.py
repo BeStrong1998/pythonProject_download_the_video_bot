@@ -4,8 +4,6 @@ import yt_dlp
 from config import token
 
 
-
-# load_dotenv()
 bot = telebot.TeleBot(token)
 dict_links = {}
 
