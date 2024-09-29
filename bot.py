@@ -10,7 +10,7 @@ dict_links = {}
 @bot.message_handler(commands=['start'])
 def welcome(message) -> None:
     chat_id = message.chat.id
-    mess = f'Введите ссылку на видео\n'
+    mess = f'Введите ссылку на видео-файл\n'
     bot.send_message(chat_id, mess)
     dict_links[chat_id] = {}
     bot.register_next_step_handler(message, save_lin)
@@ -21,8 +21,8 @@ def save_lin(message) -> None:
     dict_links[chat_id] = link
     bot.send_message(chat_id,
                      f'Отлично, ваша ссылка {link} '
-                     f'на видео-файл добавлена в очередь!'
-                     f'\nИдёт скачивание видео файла......')
+                     f'добавлена в очередь!')
+    bot.send_message(chat_id,f'Идёт скачивание видео файла......')
     url = link
     print('Качаем!')
     # функция для скачивания видео из YouTube с помощью yt_dlp
