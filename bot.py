@@ -5,8 +5,8 @@ from telebot.types import InputFile
 from config import token
 
 
-bot = telebot.TeleBot(token)
 
+bot = telebot.TeleBot(token)
 
 
 # функция для скачивания файла
@@ -17,15 +17,12 @@ def download_video(url):
         os.chdir(path)
     ydl_opts = {
         'format': 'bestvideo[height<=240]+bestaudio/best[height<=240]',
+        'no-playlist': True,
         'quiet': True,
         'no_warnings': True,
         'outtmpl': '%(id)s.%(ext)s',
         'merge_output_format': 'mp4'
-        # 'merge_output_format': 'mp4',
-        # 'no-playlist': True,
-        # 'playlist_items': '1',
-        # 'format': 'bestvideo[height<=144]+bestaudio/best[height<=144]',
-    }
+        }
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         ydl.download([url])
         print(f'Видео-файл {url} успешно скачен!')
