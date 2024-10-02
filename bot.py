@@ -7,12 +7,6 @@ from config import token
 
 bot = telebot.TeleBot(token)
 
-@bot.message_handler(commands=['start'])
-def handler(message):
-    chat_id = message.chat.id
-    bot.send_message(chat_id, f'Привет! Это бот для загрузки видео-файлов.'
-                              '\nВведи ссылку на видео, которое хочешь загрузить.')
-
 
 # функция для скачивания файла
 def download_video(url):
@@ -33,7 +27,7 @@ def download_video(url):
     }
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         ydl.download([url])
-        print('Видео-файл успешно скачен!')
+        print(f'Видео-файл {url} успешно скачен!')
 
 
 def find_file():
